@@ -3,7 +3,9 @@ package com.shinde.demo.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,5 +36,15 @@ public class StudentController {
 	public Student postStudent(@RequestBody Student student) {
 		
 		return repo.save(student);
+	}
+	
+	@DeleteMapping("/students/{rno}")
+	public String postStudent(@PathVariable ("rno") int rno) {
+
+		if(repo.existsById(rno)) {
+			repo.deleteById(rno);
+			return "Deleted entry of rno " + rno;
+		}
+		else return "Not Found";
 	}
 }
