@@ -55,10 +55,22 @@ public class StudentController {
 		return repo.save(student);
 	}
 	
+	@GetMapping("/students/names")
+	public List<String> getNames() {
+		
+		return repo.getSnames();
+	}
+	
 	@GetMapping("/students/names/{name}")
-	public List<Student> getNames(@PathVariable("name") String name) {
+	public List<Student> getNamesByname(@PathVariable("name") String name) {
 		
 		return repo.findBySname(name);
+	}
+	
+	@GetMapping("/students/getByMarkSorted/{mark}")
+	public List<Student> getByMarkSorted(@PathVariable("mark") int mark) {
+		Object res = repo.findByMarkSortedBySname(mark);
+		return repo.findByMarkSortedBySname(mark);
 	}
 	
 	@GetMapping("/students/marks_GT/{mark}")
@@ -66,4 +78,5 @@ public class StudentController {
 		
 		return repo.findByMarksGreaterThan(mark);
 	}
+	
 }
