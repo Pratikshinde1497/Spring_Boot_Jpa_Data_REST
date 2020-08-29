@@ -54,4 +54,10 @@ public class StudentController {
 
 		return repo.save(student);
 	}
+	
+	@GetMapping("/students/names/{name}")
+	public List<Student> getNames(@PathVariable("name") String name) {
+		
+		return repo.findBySname(name);
+	}
 }
