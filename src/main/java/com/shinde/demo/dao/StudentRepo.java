@@ -12,4 +12,5 @@ import com.shinde.demo.models.Student;
 public interface StudentRepo extends JpaRepository<Student, Integer> {
 	
 	List<Student> findBySname(String name);
+	List<Student> findByMarksGreaterThan(int mark);
 }

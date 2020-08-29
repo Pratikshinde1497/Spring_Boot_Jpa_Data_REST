@@ -60,4 +60,10 @@ public class StudentController {
 		
 		return repo.findBySname(name);
 	}
+	
+	@GetMapping("/students/marks_GT/{mark}")
+	public List<Student> getNames(@PathVariable("mark") int mark) {
+		
+		return repo.findByMarksGreaterThan(mark);
+	}
 }
